@@ -108,7 +108,7 @@ header {
   border-bottom: 3px solid transparent;
   border-image: var(--kids-rainbow) 1;
   padding: var(--spacing-md) var(--spacing-lg);
-  transform: translateY(-100%);
+  transform: translateY(0); /* Changed from translateY(-100%) */
   transition: all var(--transition-slow);
   box-shadow: var(--shadow-lg);
   min-height: 70px;
@@ -118,6 +118,11 @@ header {
   header {
     padding: var(--spacing-sm) var(--spacing-md);
     min-height: 60px;
+    transform: translateY(0) !important; /* Force header to show on mobile */
+  }
+
+  header.slide-up {
+    transform: translateY(-100%);
   }
 }
 
