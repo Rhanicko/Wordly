@@ -237,10 +237,16 @@ class WordlyKidsApp {
       header.appendChild(headerContent)
     }
 
-    // Header animations
-    setTimeout(() => {
+    // Show header immediately on mobile, with animation on desktop
+    if (this.isMobile) {
       header.classList.add("slide-down")
-    }, 100)
+      header.style.transform = "translateY(0)"
+    } else {
+      // Header animations for desktop
+      setTimeout(() => {
+        header.classList.add("slide-down")
+      }, 100)
+    }
 
     // Optimized scroll effects
     let lastScrollY = window.scrollY
@@ -388,7 +394,7 @@ class WordlyKidsApp {
 
   navigateToStory(card) {
     const header = document.querySelector("header")
-    let targetURL = card.getAttribute("data-url")
+    const targetURL = card.getAttribute("data-url")
 
     if (!targetURL) {
       this.playKidSound("error")
